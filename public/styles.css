@@ -11,6 +11,67 @@
 
 html {
   box-sizing: border-box;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+label {
+  line-height: 2rem;
+}
+
+.input_input,
+.input_input_error,
+textarea {
+  width: 70%;
+  border-radius: 0.5rem;
+}
+
+.sexy {
+  line-height: 4rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5rem;
+  width: 100%;
+}
+
+.input_input_error {
+  background-color: pink;
+}
+
+.job_buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.choice,
+.choice_error {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin: 1rem;
+}
+.choice_error {
+  background-color: pink;
+}
+
+.choice > p,
+.choice_error > p {
+  padding: 0.5rem;
+}
+
+.sendinn {
+  border-radius: 2px;
 }
 
 /* todo útfæra útlit */

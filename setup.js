@@ -2,8 +2,10 @@ require('dotenv').config();
 
 const fs = require('fs');
 const util = require('util');
+// eslint-disable-next-line no-unused-vars
 const path = require('path');
 
+// eslint-disable-next-line import/no-unresolved
 const { Client } = require('pg');
 
 const connectionString = process.env.DATABASE_URL;
@@ -50,6 +52,7 @@ async function main() {
     console.info('Gögnum bætt við');
   } catch (e) {
     console.error('Villa við að bæta gögnum við:', e.message);
+    // eslint-disable-next-line no-useless-return
     return;
   }
 }

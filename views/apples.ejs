@@ -1,0 +1,50 @@
+<%- include('header') -%>
+
+<div class="applist">
+  <h1>Atvinnuumsóknir</h1>
+  <% appList.forEach((app) => { %>
+  <div class="appsingle">
+    <div class="appname">
+      <h2><%= app.name %></h2>
+    </div>
+    <div>
+      <a href=""> <%= app.email %> </a>
+    </div>
+    <div>
+      <p>Sími: <%= app.phone %></p>
+    </div>
+    <div>
+      <p>Umsókn send: <%= app.created %></p>
+    </div>
+    <div class="apppres">
+      <p><%= app.about %></p>
+    </div>
+    <div class="appbuttons">
+      <% if (!app.processed) { %>
+      <form
+        method="post"
+        action="/vinna"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <button type="submit" name="id" value="<%=app.id%>">
+          Vinna umsókn
+        </button>
+      </form>
+      <% } else { %>
+      <p>&#x2714; Umsókn unnin <%= app.updated %></p>
+      <% } %>
+      <form
+        method="post"
+        action="/delete"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <button type="submit" name="id" value="<%=app.id%>">
+          Eyða umsókn
+        </button>
+      </form>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<%- include('footer') -%>

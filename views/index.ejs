@@ -1,0 +1,80 @@
+<link rel="stylesheet" type="text/css" href="styles.css" />
+<h1>Atvinnuumsókn</h1>
+<form method="post" action="/register">
+  <div class="form">
+    <div class="input">
+      <label for="name">Nafn:</label>
+      <% if (errorParams.includes("name")) {%>
+        <input class="input_input_error" id="name" name="name" value="<%= name %>" />
+        <%} else {%> 
+          <input class="input_input" id="name" name="name" value="<%= name %>" />
+        <%}%>
+    </div>
+    <div class="input">
+      <label for="email">Netfang:</label>
+      <% if (errorParams.includes("email")) {%>
+        <input class="input_input_error" id="email" name="email" value="<%= email %>" />
+        <%} else {%> 
+          <input class="input_input" id="email" name="email" value="<%= email %>" />
+        <%}%>
+    </div>
+    <div class="input">
+      <label for="phone">Sími:</label>
+      <% if (errorParams.includes("phone")) {%>
+        <input class="input_input_error" id="phone" name="phone" value="<%= phone %>" />
+        <%} else {%> 
+          <input class="input_input" id="phone" name="phone" value="<%= phone %>" />
+        <%}%>
+    </div>
+    <div class="input">
+      <label class="sexy" for="about">Kynning á þér:</label>
+      <% if (errorParams.includes("about")) {%>
+        <input class="input_input_error" id="about" name="about" value="<%= about %>" />
+        <%} else {%> 
+          <input class="input_input" id="about" name="about" value="<%= about %>" />
+        <%}%>
+<%= about %></textarea
+      >
+    </div>
+    <div class="job_buttons">
+      <h2>Starf sem er sótt um:</h2>
+
+      <% if (errorParams.includes("job")) {%>
+      <div class="choice_error">
+      <%} else {%> 
+        <div class="choice">
+      <%}%> 
+          <input type="radio" name="job" value="forritari" <%
+        if(job =='forritari') {%> checked <%}%>/>
+        <p>Forritari</p>
+      </div>
+
+      <% if (errorParams.includes("job")) {%>
+        <div class="choice_error">
+        <%} else {%> 
+          <div class="choice">
+        <%}%> 
+      <input type="radio" name="job" value="honnudur" <% if(job =='honnudur')
+        {%> checked <%}%> />
+        <p>Hönnuður</p>
+      </div>
+      <% if (errorParams.includes("job")) {%>
+        <div class="choice_error">
+        <%} else {%> 
+          <div class="choice">
+        <%}%> 
+        <input type="radio" name="job" value="verkefnastjori" <% if(job
+        =='verkefnastjori') {%> checked <%}%> />
+        <p>Verkefnastjóri</p>
+      </div>
+    </div>
+  </div>
+
+  <% errors.forEach((error) => { %>
+  <li><%= error.msg %></li>
+  <% }) %>
+
+  <button class="sendinn">Senda umsókn</button>
+</form>
+
+<%- include('footer') -%>
