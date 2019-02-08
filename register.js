@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const express = require('express');
 const { check, validationResult } = require('express-validator/check');
 
@@ -50,6 +51,7 @@ function form(req, res) {
   });
 }
 async function register(req, res) {
+  // eslint-disable-next-line object-curly-newline
   const { body: { name, email, phone, about, job } = {} } = req;
 
   const errors = validationResult(req);
@@ -57,8 +59,9 @@ async function register(req, res) {
   if (!errors.isEmpty()) {
     const errorMessages = errors.array();
     // console.log(errorMessages);
-    let errorParams = [];
-    errorMessages.forEach(function(e) {
+    const errorParams = [];
+    // eslint-disable-next-line arrow-parens
+    errorMessages.forEach(e => {
       errorParams.push(e.param);
     });
     res.render('index', {
@@ -75,7 +78,6 @@ async function register(req, res) {
     try {
       await insertToDB(name, email, phone, about, job);
     } catch (e) {
-      console.log('Gat ekki búið til umsókn:', name, e);
       throw e;
     }
     res.render('thanks', { title: 'Takk fyrir' });

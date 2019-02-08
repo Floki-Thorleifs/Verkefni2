@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable comma-dangle */
 const { Client } = require('pg');
 
 const connectionString = process.env.DATABASE_URL; // sótt úr env gegnum dotenv pakka
@@ -9,10 +11,11 @@ const client = new Client({
 async function insert(name, email, phone, about, job) {
   client.connect();
   try {
+    // eslint-disable-next-line operator-linebreak
     const query =
       'INSERT INTO applications( name, email, phone, about, job, processed) VALUES ( $1, $2, $3, $4, $5, FALSE)';
+    // eslint-disable-next-line no-unused-vars
     const res = await client.query(query, [name, email, phone, about, job]);
-    console.log(res.rows);
   } catch (err) {
     console.error(err);
   } finally {
@@ -42,7 +45,6 @@ async function runQuery(id, query) {
   const client = new Client({ connectionString });
   await client.connect();
   const string = query + id;
-  console.log(string);
   try {
     const result = await client.query(string);
     const { rows } = result;
